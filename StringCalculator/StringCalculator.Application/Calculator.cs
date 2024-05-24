@@ -10,7 +10,7 @@ public class Calculator
         
         if (splittedNumbers.Length == 1) return int.Parse(splittedNumbers[0]);
 
-        var sum = int.Parse(splittedNumbers[0]) + int.Parse(splittedNumbers[1]);
+        var sum = splittedNumbers.Sum(int.Parse);
         return sum;
     }
 }

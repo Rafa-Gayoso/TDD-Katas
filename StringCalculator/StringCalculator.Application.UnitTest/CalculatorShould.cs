@@ -2,7 +2,7 @@ using FluentAssertions;
 
 namespace StringCalculator.Application.UnitTest;
 
-public class Tests
+public class CalculatorShould
 {
     private Calculator _calculator;
 
@@ -26,10 +26,12 @@ public class Tests
         result.Should().Be(1);
     }
     
-    [Test]
-    public void return_sum_of_two_numbers()
+    [TestCase("2,3", 5, TestName = "two_numbers")]
+    [TestCase("1,2,3", 6, TestName = "three_numbers")]
+    [TestCase("5,7,12,30,20", 74, TestName = "five_numbers")]
+    public void return_sum_of(string numbers, int expectedResult)
     {
-        var result = _calculator.Add("2,3");
-        result.Should().Be(5);
+        var result = _calculator.Add(numbers);
+        result.Should().Be(expectedResult);
     }
 }
